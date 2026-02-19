@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+// import Carousel from "../components/design_components/carousel/Carousel";
 
 export default function ContactPage() {
   const form = useRef();
@@ -53,6 +54,16 @@ export default function ContactPage() {
         <button type="submit" className="bg-blue-600 text-white p-2">
           Pošalji
         </button>
+        {/* <div style={{ height: "600px", position: "relative" }}>
+          <Carousel
+            baseWidth={310}
+            autoplay
+            autoplayDelay={3000}
+            pauseOnHover
+            loop
+            round
+          />
+        </div> */}
       </form>
     </div>
   );

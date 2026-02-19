@@ -1,10 +1,15 @@
+import HeroSection from "../sections/HeroSection";
+import AboutUsSection from "../sections/AboutUsSection";
+import WorkFieldsSection from "../sections/WorkFieldsSection";
+import TeamSection from "../sections/TeamSection";
+
 export default function HomePage() {
   return (
-    <div className="p-10 text-center">
-      <h1 className="text-4xl font-bold mb-4">Dobrodošli kod advokata</h1>
-      <p className="text-lg">
-        Profesionalne pravne usluge za sve vaše potrebe.
-      </p>
+    <div className="scroll-smooth">
+      <HeroSection />
+      <AboutUsSection />
+      <WorkFieldsSection />
+      <TeamSection />
     </div>
   );
 }
