@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 
 export default function HeroSection() {
@@ -6,6 +7,11 @@ export default function HeroSection() {
   const [clients, setClients] = useState(0);
   const [lawyers, setLawyers] = useState(0);
   const [animateText, setAnimateText] = useState(false);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   useEffect(() => {
     const animateNumber = (target, setter, duration = 2000) => {
@@ -21,12 +27,17 @@ export default function HeroSection() {
     animateNumber(120, setCases);
     animateNumber(95, setClients);
     animateNumber(3, setLawyers);
-
-    setAnimateText(true);
   }, []);
 
+  useEffect(() => {
+    if (inView) setAnimateText(true);
+  }, [inView]);
+
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden font-serif">
+    <div
+      ref={ref}
+      className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden font-serif"
+    >
       <div
         className="absolute inset-0 w-full h-full -z-10 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/arch.jpg')" }}
