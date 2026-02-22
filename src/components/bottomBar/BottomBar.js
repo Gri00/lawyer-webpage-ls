@@ -14,9 +14,10 @@ const BottomBar = () => {
   const navigate = useNavigate();
 
   const footerLinks = [
-    { text: "Polja delovanja", id: "work-fields" },
+    { text: "Naslovna", id: null },
     { text: "O nama", id: "about-us" },
-    { text: "Tim advokata", id: "team" },
+    { text: "Polja delovanja", id: "work-fields" },
+    { text: "Advokatski tim", id: "team" },
     { text: "Najčešća pitanja", id: "about-us" },
     { text: "Kontakt", path: "/contact" },
   ];

@@ -114,7 +114,7 @@ export default function HeroSection() {
       <div className="flex flex-col md:flex-row items-center md:justify-center text-center mt-8 gap-6 md:gap-12">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center">
-            <span className="text-3xl md:text-5xl font-bold bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
+            <span className="text-3xl md:text-5xl font-bold leading-tight md:leading-snug  bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
               {stat.value} {index !== 1 ? "+" : "%"}
             </span>
             <p className="mt-2 text-base md:text-xl bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">

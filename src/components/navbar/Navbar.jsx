@@ -9,9 +9,9 @@ export default function Navbar() {
 
   const links = [
     { text: "Naslovna", id: null },
-    { text: "Polja delovanja", id: "work-fields" },
     { text: "O nama", id: "about-us" },
-    { text: "Advokati", id: "team" },
+    { text: "Polja delovanja", id: "work-fields" },
+    { text: "Advokatski tim", id: "team" },
     { text: "Kontakt", path: "/contact" },
   ];
 
