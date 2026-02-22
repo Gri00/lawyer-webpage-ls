@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ReactComponent as EmailIcon } from "../../assets/icons/email.svg";
 import { ReactComponent as LocationIcon } from "../../assets/icons/location.svg";
 import { ReactComponent as PhoneIcon } from "../../assets/icons/phone.svg";
+import CopiedTooltip from "../common/CopiedTooltip";
 
 const TopBar = () => {
   const [copied, setCopied] = useState(false);
@@ -28,73 +29,31 @@ const TopBar = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#000",
-        padding: "2px 0",
-        textAlign: "center",
-        fontSize: "14px",
-        fontWeight: "500",
-        color: "#e0e0e0",
-        position: "relative",
-      }}
-    >
-      <span
-        onClick={handleEmailClick}
-        style={{
-          margin: "0 10px",
-          display: "inline-flex",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
-      >
-        <EmailIcon style={iconStyle} />
-        {email}
-      </span>
-
-      <span
-        onClick={handleLocationClick}
-        style={{
-          margin: "0 10px",
-          display: "inline-flex",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
-      >
-        <LocationIcon style={iconStyle} />
-        {address}
-      </span>
-
-      <span
-        style={{
-          margin: "0 10px",
-          display: "inline-flex",
-          alignItems: "center",
-        }}
-      >
-        <PhoneIcon style={iconStyle} />
-        +381 123 456 789
-      </span>
-
-      {copied && (
-        <div
-          style={{
-            position: "fixed",
-            top: mousePos.y + 10,
-            left: mousePos.x + 5,
-            backgroundColor: "#222",
-            color: "#d6a13b",
-            padding: "2px 6px",
-            borderRadius: "4px",
-            fontSize: "12px",
-            pointerEvents: "none",
-            zIndex: 9999,
-            whiteSpace: "nowrap",
-          }}
+    <div className="bg-black text-[#e0e0e0] font-medium text-sm relative">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 py-1 px-2">
+        <span
+          onClick={handleEmailClick}
+          className="flex items-center cursor-pointer"
         >
-          Kopirano
-        </div>
-      )}
+          <EmailIcon style={iconStyle} />
+          {email}
+        </span>
+
+        <span
+          onClick={handleLocationClick}
+          className="flex items-center cursor-pointer"
+        >
+          <LocationIcon style={iconStyle} />
+          {address}
+        </span>
+
+        <span className="flex items-center">
+          <PhoneIcon style={iconStyle} />
+          +381 123 456 789
+        </span>
+      </div>
+
+      <CopiedTooltip show={copied} mousePos={mousePos} />
     </div>
   );
 };

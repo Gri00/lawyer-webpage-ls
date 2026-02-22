@@ -33,10 +33,16 @@ export default function HeroSection() {
     if (inView) setAnimateText(true);
   }, [inView]);
 
+  const stats = [
+    { value: cases, label: "Uspešno završenih slučajeva", width: "w-48" },
+    { value: clients, label: "Zadovoljnih klijenata", width: "w-32" },
+    { value: lawyers, label: "Pravnika sa zajedničkom misijom", width: "w-48" },
+  ];
+
   return (
     <div
       ref={ref}
-      className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden font-serif"
+      className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden font-serif px-6 md:px-0"
     >
       <div
         className="absolute inset-0 w-full h-full -z-10 bg-cover bg-center"
@@ -60,7 +66,7 @@ export default function HeroSection() {
         </p>
 
         <h1
-          className={`text-5xl md:text-6xl font-bold mb-4 text-[#e8e6d8] drop-shadow-lg transition-all duration-1000 ${
+          className={`text-4xl md:text-6xl font-bold mb-4 text-[#e8e6d8] drop-shadow-lg transition-all duration-1000 ${
             animateText
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-6"
@@ -79,7 +85,7 @@ export default function HeroSection() {
         </h1>
 
         <p
-          className={`text-lg md:text-lg max-w-2xl mx-auto drop-shadow-md transition-all duration-1000 ${
+          className={`text-base md:text-lg max-w-2xl mx-auto drop-shadow-md transition-all duration-1000 ${
             animateText
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-4"
@@ -94,7 +100,8 @@ export default function HeroSection() {
         {/* Dugme */}
         <Link
           to="/contact"
-          className={`mt-8 inline-block font-semibold py-3 px-6 rounded-lg
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={`mt-6 md:mt-8 inline-block font-semibold py-3 px-6 rounded-lg
             bg-[#d6a13b]/70 backdrop-blur-sm border border-[#d6a13b] text-white
             transition-all duration-1000 hover:bg-[#d6a13b]/100 hover:scale-105
             ${animateText ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}
@@ -104,36 +111,18 @@ export default function HeroSection() {
       </div>
 
       {/* Statistika */}
-      <div className="flex flex-col items-center text-center mt-8 gap-4">
-        <div className="flex gap-12 text-center">
-          <div>
-            <span className="text-4xl md:text-5xl font-bold bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
-              {cases}+
+      <div className="flex flex-col md:flex-row items-center md:justify-center text-center mt-8 gap-6 md:gap-12">
+        {stats.map((stat, index) => (
+          <div key={index} className="flex flex-col items-center">
+            <span className="text-3xl md:text-5xl font-bold bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
+              {stat.value} {index !== 1 ? "+" : "%"}
             </span>
-            <p className="mt-2 text-lg md:text-xl bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
-              Uspešno završenih slučajeva
+            <p className="mt-2 text-base md:text-xl bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
+              {stat.label}
             </p>
-            <div className="mt-1 w-48 h-[1px] bg-[#d6a13b] mx-auto"></div>
+            <div className={`mt-1 h-[1px] bg-[#d6a13b] ${stat.width}`}></div>
           </div>
-          <div>
-            <span className="text-4xl md:text-5xl font-bold bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
-              {clients}%
-            </span>
-            <p className="mt-2 text-lg md:text-xl bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
-              Zadovoljnih klijenata
-            </p>
-            <div className="mt-1 w-32 h-[1px] bg-[#d6a13b] mx-auto"></div>
-          </div>
-          <div>
-            <span className="text-4xl md:text-5xl font-bold bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
-              {lawyers}+
-            </span>
-            <p className="mt-2 text-lg md:text-xl bg-gradient-to-t from-[#d6a13b] via-[#f8f7f0] to-white bg-clip-text text-transparent">
-              Pravnika sa zajedničkom misijom
-            </p>
-            <div className="mt-1 w-48 h-[1px] bg-[#d6a13b] mx-auto"></div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full shadow-lg bg-[#d6a13b] text-white flex items-center justify-center 
+      className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full shadow-lg bg-[#d6a13b]/60 backdrop-blur-sm border border-[#d6a13b] text-gray-300 flex items-center justify-center 
         transition-all duration-300 transform ${
           visible
             ? "opacity-100 translate-y-0"
@@ -30,12 +30,7 @@ export default function ScrollToTop() {
         } hover:scale-110`}
       aria-label="Scroll to top"
     >
-      <img
-        src="/images/arrow.svg"
-        alt="Arrow Up"
-        className="w-6 h-6"
-        style={{ filter: "invert(1)" }}
-      />
+      <img src="/images/arrow.svg" alt="Arrow Up" className="w-6 h-6" />
     </button>
   );
 }

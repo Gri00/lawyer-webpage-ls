@@ -1,38 +1,11 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { scroller } from "react-scroll";
+import { handleScrollNavigation } from "../../utils/scrollToSection";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-
-  const scrollToSection = (id) => {
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        if (id) {
-          scroller.scrollTo(id, {
-            duration: 800,
-            smooth: "easeInOutQuart",
-            offset: -80,
-          });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      if (id) {
-        scroller.scrollTo(id, {
-          duration: 800,
-          smooth: "easeInOutQuart",
-          offset: -80,
-        });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    }
-  };
 
   const links = [
     { text: "Naslovna", id: null },
@@ -54,7 +27,7 @@ export default function Navbar() {
               key={idx}
               className="relative px-3 text-sm font-serif hover:text-[#d6a13b] transition-colors duration-300 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[1px] before:bg-[#d6a13b] first:before:hidden"
               onClick={() =>
-                link.path ? navigate(link.path) : scrollToSection(link.id)
+                handleScrollNavigation(location, navigate, link.id, link.path)
               }
             >
               {link.text}
@@ -105,7 +78,7 @@ export default function Navbar() {
             className="block px-3 py-2 text-sm font-serif hover:text-[#d6a13b] transition-colors duration-300 border-b border-[#d6a13b]"
             onClick={() => {
               setIsOpen(false);
-              link.path ? navigate(link.path) : scrollToSection(link.id);
+              handleScrollNavigation(location, navigate, link.id, link.path);
             }}
           >
             {link.text}
