@@ -14,11 +14,10 @@ const BottomBar = () => {
   const navigate = useNavigate();
 
   const footerLinks = [
-    { text: "Naslovna", id: null },
     { text: "O nama", id: "about-us" },
     { text: "Polja delovanja", id: "work-fields" },
     { text: "Advokatski tim", id: "team" },
-    { text: "Najčešća pitanja", id: "about-us" },
+    { text: "Najčešća pitanja", path: "/questions-answers" },
     { text: "Kontakt", path: "/contact" },
   ];
 
@@ -53,11 +52,11 @@ const BottomBar = () => {
     <footer className="bg-black text-white font-serif pt-12 md:pt-16 pb-8 px-6 relative">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-16 text-center justify-items-center">
         <div className="max-w-sm">
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-center mb-1">
             <img
               src="/images/logoLS.png"
               alt="Logo"
-              className="h-10 md:h-12 w-auto"
+              className="h-10 md:h-9 w-auto"
             />
           </div>
 
@@ -77,7 +76,7 @@ const BottomBar = () => {
         <div className="max-w-sm">
           <h3 className="text-lg md:text-xl mb-3 tracking-wide">Informacije</h3>
 
-          <div className="w-24 md:w-32 h-[1px] bg-[#d6a13b] mx-auto mb-5"></div>
+          <div className="w-20 md:w-32 h-[1px] bg-[#d6a13b] mx-auto mb-5"></div>
 
           <div className="space-y-4 text-gray-300 text-sm md:text-base">
             <div

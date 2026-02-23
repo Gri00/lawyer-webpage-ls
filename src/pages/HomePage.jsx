@@ -2,6 +2,7 @@ import HeroSection from "../sections/HeroSection";
 import AboutUsSection from "../sections/AboutUsSection";
 import WorkFieldsSection from "../sections/WorkFieldsSection";
 import TeamSection from "../sections/TeamSection";
+import QuestionSection from "../sections/QuestionSection";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,9 @@ export default function HomePage() {
       </div>
       <div id="team">
         <TeamSection />
+      </div>
+      <div id="questions">
+        <QuestionSection />
       </div>
     </div>
   );

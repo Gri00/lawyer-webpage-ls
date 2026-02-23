@@ -12,6 +12,7 @@ export default function Navbar() {
     { text: "O nama", id: "about-us" },
     { text: "Polja delovanja", id: "work-fields" },
     { text: "Advokatski tim", id: "team" },
+    { text: "Najčešća pitanja", path: "/questions-answers" },
     { text: "Kontakt", path: "/contact" },
   ];
 

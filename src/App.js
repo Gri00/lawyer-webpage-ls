@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
+import QuestionsPage from "./pages/QuestionsPage";
 import TopBar from "./components/topBar/TopBar";
 import BottomBar from "./components/bottomBar/BottomBar";
 import Navbar from "./components/navbar/Navbar";
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/questions-answers" element={<QuestionsPage />} />
           </Routes>
         </div>
 

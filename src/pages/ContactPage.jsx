@@ -1,11 +1,13 @@
 import { useRef, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import StatusDialog from "../components/statusDialog/StatusDialog";
 import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const form = useRef();
   const [animate, setAnimate] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -31,11 +33,11 @@ export default function ContactPage() {
       )
       .then(
         () => {
-          alert("Poruka poslata!");
+          setStatus("success");
           form.current.reset();
         },
         () => {
-          alert("Došlo je do greške.");
+          setStatus("error");
         },
       )
       .finally(() => setLoading(false));
@@ -161,9 +163,12 @@ export default function ContactPage() {
                   className="border border-gray-300 p-3 w-full bg-white focus:outline-none focus:border-[#d6a13b]"
                 >
                   <option>Bez teme</option>
-                  <option>Tema 1</option>
-                  <option>Tema 2</option>
-                  <option>Tema 3</option>
+                  <option>Krivično pravo</option>
+                  <option>Radno pravo</option>
+                  <option>Zastupanje u sporovima</option>
+                  <option>Privredno pravo</option>
+                  <option>Imovinski odnosi</option>
+                  <option>Porodično pravo</option>
                 </select>
               </div>
             </div>
@@ -230,6 +235,7 @@ export default function ContactPage() {
           className="w-[420px] lg:w-[480px] h-[520px] lg:h-[680px] object-cover rounded-lg shadow-lg"
         />
       </div>
+      <StatusDialog status={status} onClose={() => setStatus(null)} />
     </div>
   );
 }
