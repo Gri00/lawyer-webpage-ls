@@ -20,7 +20,12 @@ export default function Navbar() {
     <nav className="bg-gray-100 text-black border-t border-b border-black px-6 py-2">
       <div className="flex justify-between items-center">
         <div>
-          <img src="/images/logoLS.png" alt="Logo" className="h-8" />
+          <img
+            src="/images/logoLS.png"
+            alt="Logo"
+            className="h-8 cursor-pointer"
+            onClick={() => navigate("/")}
+          />
         </div>
         <div className="hidden md:flex gap-3">
           {links.map((link, idx) => (
